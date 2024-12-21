@@ -11,6 +11,7 @@
 #include "prometheus/detail/pull_export.h"
 
 class CivetServer;
+class CivetHandler;
 struct CivetCallbacks;
 
 namespace prometheus {
@@ -44,6 +45,8 @@ class PROMETHEUS_CPP_PULL_EXPORT Exposer {
                          const std::string& uri = std::string("/metrics"));
 
   std::vector<int> GetListeningPorts() const;
+
+  void RegisterHandler(CivetHandler* handler, const std::string& uri);
 
  private:
   detail::Endpoint& GetEndpointForUri(const std::string& uri);

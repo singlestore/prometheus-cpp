@@ -64,4 +64,8 @@ detail::Endpoint& Exposer::GetEndpointForUri(const std::string& uri) {
   return *endpoints_.back().get();
 }
 
+void Exposer::RegisterHandler(CivetHandler* handler, const std::string& uri) {
+  server_->addHandler(uri, handler);
+}
+
 }  // namespace prometheus
